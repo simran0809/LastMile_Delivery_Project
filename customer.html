@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - Last-Mile Logistics</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- Leaflet Map CSS/JS CDNs -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">Logistics Customer</div>
+      <ul class="sidebar-menu">
+        <li id="menu-place-order" class="active"><a href="#" onclick="switchTab('place-order')">Place New Order</a></li>
+        <li id="menu-my-orders"><a href="#" onclick="switchTab('my-orders')">My Orders</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div id="username-display" class="user-name">Loading...</div>
+        <div class="user-role">Customer Account</div>
+        <button class="logout-btn" onclick="logout()">Logout Account</button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <div class="header-actions">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <button id="back-to-orders-btn" onclick="switchTab('my-orders')" style="display:none; align-items:center; gap:6px; background:#f7fafc; border: 2px solid #000000; color:var(--primary-color); padding:7px 14px; border-radius: 12px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='#ebf8ff'" onmouseout="this.style.background='#f7fafc'">
+            ← My Orders
+          </button>
+          <h1 id="page-title">Place Delivery Order</h1>
+        </div>
+        <div style="font-size: 14px; font-weight: bold; background: #ebf8ff; color: #2b6cb0; padding: 6px 12px; border-radius: 12px;">
+          Active Session
+        </div>
+      </div>
+
+      <!-- PLACE ORDER PANEL -->
+      <div id="tab-content-place-order" class="tab-panel">
+        <div class="rate-card-grid">
+          <!-- Form -->
+          <div class="panel">
+            <div class="panel-header">Package & Shipping Details</div>
+            <div class="panel-body">
+              <form id="order-form">
+                <div class="form-group">
+                  <label for="pickup-addr">Pickup Street Address</label>
+                  <input type="text" id="pickup-addr" class="form-control" placeholder="123 Main St, Floor 2" required>
+                </div>
+                <div class="form-group">
+                  <label for="pickup-area">Pickup Area (Zone Finder)</label>
+                  <select id="pickup-area" class="form-control" required>
+                    <option value="">-- Select Pickup Area --</option>
+                  </select>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                <div class="form-group">
+                  <label for="drop-addr">Destination Street Address</label>
+                  <input type="text" id="drop-addr" class="form-control" placeholder="456 Industrial Parkway" required>
+                </div>
+                <div class="form-group">
+                  <label for="drop-area">Drop Area (Zone Finder)</label>
+                  <select id="drop-area" class="form-control" required>
+                    <option value="">-- Select Drop Area --</option>
+                  </select>
+                </div>
+
+                <div class="form-group" style="margin-top: 15px;">
+                  <label>Interactive Map Zone Selector</label>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">
+                    📍 Click once to pin <strong>Pickup</strong> (Blue), click again to pin <strong>Destination</strong> (Red).
+                  </div>
+                  <div id="picker-map" style="height: 200px; border-radius: 12px; border: 2px solid #000000; margin-bottom: 10px; z-index: 10;"></div>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="resetPickerMap()" style="padding: 4px 8px; font-size: 11px;">Clear Map Pins</button>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                <div class="rate-card-grid" style="gap: 10px;">
+                  <div class="form-group">
+                    <label>Length (L) cm</label>
+                    <input type="number" id="pkg-len" class="form-control" min="1" value="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Width (W) cm</label>
+                    <input type="number" id="pkg-wid" class="form-control" min="1" value="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Height (H) cm</label>
+                    <input type="number" id="pkg-hei" class="form-control" min="1" value="10" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Actual Wt (kg)</label>
+                    <input type="number" id="pkg-wt" class="form-control" min="0.1" step="0.1" value="1.0" required>
+                  </div>
+                </div>
+
+                <div class="rate-card-grid">
+                  <div class="form-group">
+                    <label for="order-type">Order Type</label>
+                    <select id="order-type" class="form-control">
+                      <option value="B2C">B2C (Retail Delivery)</option>
+                      <option value="B2B">B2B (Corporate Account)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="pay-type">Payment Type</label>
+                    <select id="pay-type" class="form-control">
+                      <option value="Prepaid">Prepaid (Card/UPI)</option>
+                      <option value="COD">Cash on Delivery (COD)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="schedule-date">Delivery Scheduled Date</label>
+                  <input type="date" id="schedule-date" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mt-3">Confirm and Place Order</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Live Cost Estimator Side Panel -->
+          <div>
+            <div class="panel" style="position: sticky; top: 20px;">
+              <div class="panel-header" style="background: #2b6cb0; color: white;">Real-Time Price Estimate</div>
+              <div class="panel-body" id="estimator-panel" style="font-size: 14px;">
+                <div style="text-align: center; color: var(--text-muted); padding: 40px 0;">
+                  
+  <div style="text-align: center;">
+    <img src="/images/order_doodle.jpg" alt="Delivery Doodle" style="width: 100%; max-width: 250px; margin-bottom: 15px; border-radius: 12px; opacity: 0.9; mix-blend-mode: multiply;">
+    <br>
+    Enter package details to auto-calculate logistics pricing.
+  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MY ORDERS PANEL -->
+      <div id="tab-content-my-orders" class="tab-panel" style="display: none;">
+        <div class="panel">
+          <div class="panel-header">Delivery Orders Ledger</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>To Address</th>
+                    <th>Weight (Billable)</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-list-body">
+                  <tr>
+                    <td colspan="9" style="text-align: center;">No orders found.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ORDER DETAIL MODAL -->
+  <div id="detail-modal" class="modal-overlay">
+    <div class="modal-container" style="max-width: 800px;">
+      <div class="modal-header">
+        <span>Order Tracking & Summary</span>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="rate-card-grid" style="margin-bottom: 20px;">
+          <!-- Left side details -->
+          <div>
+            <h3 style="color: var(--primary-color); margin-bottom: 10px;" id="modal-order-id">Order Details</h3>
+            <table class="table" style="font-size: 12px; border: 2px solid #000000;">
+              <tr>
+                <td><strong>Status:</strong></td>
+                <td><span id="modal-status" class="badge"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Pickup address:</strong></td>
+                <td id="modal-pickup-addr"></td>
+              </tr>
+              <tr>
+                <td><strong>Drop address:</strong></td>
+                <td id="modal-drop-addr"></td>
+              </tr>
+              <tr>
+                <td><strong>Dimensions (cm):</strong></td>
+                <td id="modal-dims"></td>
+              </tr>
+              <tr>
+                <td><strong>Billable weight:</strong></td>
+                <td id="modal-weight"></td>
+              </tr>
+              <tr>
+                <td><strong>Payment Type:</strong></td>
+                <td id="modal-payment"></td>
+              </tr>
+              <tr>
+                <td><strong>Final Surcharge:</strong></td>
+                <td id="modal-charge"></td>
+              </tr>
+              <tr>
+                <td><strong>Delivery Date:</strong></td>
+                <td id="modal-date"></td>
+              </tr>
+              <tr>
+                <td><strong>Agent assigned:</strong></td>
+                <td id="modal-agent"></td>
+              </tr>
+            </table>
+
+            <!-- Failed Delivery Reschedule Card -->
+            <div id="reschedule-box" class="panel" style="display: none; border-color: var(--danger-color); margin-top: 15px; background: #fff5f5;">
+              <div class="panel-header" style="color: #c53030; font-size: 14px;">Reschedule Failed Delivery</div>
+              <div class="panel-body" style="padding: 15px;">
+                <p style="font-size: 12px; color: #9b2c2c; margin-bottom: 10px;">
+                  Reason: <strong id="reschedule-reason"></strong>
+                </p>
+                <div class="form-group" style="margin-bottom: 10px;">
+                  <label style="font-size: 12px;">Choose New Delivery Date</label>
+                  <input type="date" id="reschedule-date-picker" class="form-control">
+                </div>
+                <button class="btn btn-danger btn-sm btn-block" onclick="submitReschedule()">Confirm Reschedule</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right side map and timeline -->
+          <div>
+            <h3 style="margin-bottom: 10px;">Live Tracker Map</h3>
+            <div id="customer-order-map" class="map-container" style="height: 200px;"></div>
+            
+            <h3 style="margin-bottom: 10px;">Status Timeline</h3>
+            <div style="max-height: 220px; overflow-y: auto; border: 2px solid #000000; border-radius: 12px; padding: 10px;">
+              <ul class="timeline" id="modal-timeline">
+                <!-- Timeline items loaded dynamically -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeModal()">Close Panel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/customer.js"></script>
+</body>
+</html>

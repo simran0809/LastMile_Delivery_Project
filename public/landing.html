@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LastMile Delivery Tracker — About the Platform</title>
+  <style>
+    :root {
+      --blue-dark: #1a365d;
+      --blue-mid: #2b6cb0;
+      --blue-light: #4299e1;
+      --blue-pale: #ebf8ff;
+      --teal: #319795;
+      --green: #48bb78;
+      --orange: #ed8936;
+      --red: #f56565;
+      --purple: #805ad5;
+      --text: #1a202c;
+      --text-muted: #718096;
+      --border: #e2e8f0;
+      --bg: #f7fafc;
+      --white: #ffffff;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26, 54, 93, 0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--blue-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #90cdf4;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 6px 14px;
+      border-radius: 12px;
+      transition: all 0.2s;
+    }
+
+    .nav-links a:hover { background: rgba(255,255,255,0.1); color: #ffffff; }
+
+    .nav-cta {
+      background: var(--blue-light) !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #3182ce !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 55%, #4299e1 100%);
+      padding: 100px 40px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      top: -200px; right: -150px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+      bottom: -100px; left: -100px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: #bee3f8;
+      padding: 6px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      border: 2px solid #000000;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 span { color: #90cdf4; }
+
+    .hero-sub {
+      font-size: 18px;
+      color: #bee3f8;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-hero-primary {
+      background: #fff;
+      color: var(--blue-dark);
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+    }
+
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 6px 6px 0px rgba(0,0,0,0.8); }
+
+    .btn-hero-outline {
+      background: transparent;
+      color: #ffffff;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+
+    .btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: #ffffff; }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: var(--blue-dark);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .strip-stat { text-align: center; }
+
+    .strip-stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: #90cdf4;
+      display: block;
+    }
+
+    .strip-stat-label {
+      font-size: 13px;
+      color: #a0aec0;
+      margin-top: 2px;
+    }
+
+    /* ── SECTION SHELL ── */
+    section { padding: 80px 40px; }
+
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--blue-mid);
+      padding: 5px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 50px;
+      line-height: 1.7;
+    }
+
+    /* ── PROBLEM SECTION ── */
+    #problem { background: var(--bg); }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border: 2px solid #000000;
+      border-radius: 12px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .problem-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .problem-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .problem-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── OBJECTIVE ── */
+    #objective { background: var(--white); }
+
+    .objective-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .objective-visual {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      border-radius: 12px;
+      padding: 40px 36px;
+      color: #ffffff;
+    }
+
+    .obj-visual-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #90cdf4;
+    }
+
+    .obj-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .obj-step-num {
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      color: #90cdf4;
+    }
+
+    .obj-step-text strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .obj-step-text span {
+      font-size: 12px;
+      color: #90cdf4;
+      opacity: 0.85;
+    }
+
+    .objective-points { list-style: none; }
+
+    .objective-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .objective-points li:last-child { border-bottom: none; }
+
+    .obj-check {
+      width: 24px;
+      height: 24px;
+      background: var(--blue-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      color: var(--blue-mid);
+      margin-top: 2px;
+    }
+
+    .objective-points li p {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .objective-points li p span {
+      display: block;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--bg); }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .role-card {
+      background: var(--white);
+      border: 2px solid #000000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+    }
+
+    .role-card-header {
+      padding: 22px 24px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .role-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .role-icon-admin  { background: rgba(66,153,225,0.12); }
+    .role-icon-customer { background: rgba(72,187,120,0.12); }
+    .role-icon-agent  { background: rgba(237,137,54,0.12); }
+
+    .role-card-header h3 { font-size: 17px; font-weight: 700; }
+    .role-card-header p  { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    .role-card-body { padding: 0 24px 22px; }
+
+    .role-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px solid var(--bg);
+    }
+
+    .role-step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .role-step-dot-green  { background: var(--green); }
+    .role-step-dot-orange { background: var(--orange); }
+
+    .role-step p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+    .role-step p strong { color: var(--text); font-size: 13px; }
+
+    /* ── FEATURES ── */
+    #features { background: var(--white); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      color: #1e293b;
+      border: 2px solid #000000;
+      border-radius: 12px;
+      padding: 26px;
+      background: var(--white);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .fi-blue   { background: rgba(66,153,225,0.1); }
+    .fi-teal   { background: rgba(49,151,149,0.1); }
+    .fi-green  { background: rgba(72,187,120,0.1); }
+    .fi-orange { background: rgba(237,137,54,0.1); }
+    .fi-purple { background: rgba(128,90,213,0.1); }
+    .fi-red    { background: rgba(245,101,101,0.1); }
+
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p  { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── REAL-WORLD IMPACT ── */
+    #impact { background: linear-gradient(135deg, #1a365d, #2b6cb0); }
+
+    #impact .section-tag { background: rgba(255,255,255,0.15); color: #bee3f8; }
+    #impact .section-title { color: #ffffff; }
+    #impact .section-lead { color: #90cdf4; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .impact-card {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid #000000;
+      border-radius: 12px;
+      padding: 28px;
+      color: #ffffff;
+    }
+
+    .impact-card-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+    .impact-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #90cdf4; }
+    .impact-card p  { font-size: 14px; color: #bee3f8; line-height: 1.6; }
+
+    /* ── TECH STACK ── */
+    #tech { background: var(--bg); }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .tech-card {
+      background: var(--white);
+      border: 2px solid #000000;
+      border-radius: 12px;
+      padding: 22px 18px;
+      text-align: center;
+    }
+
+    .tech-card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+    .tech-card h4   { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .tech-card p    { font-size: 12px; color: var(--text-muted); }
+
+    /* ── WORKFLOW TIMELINE ── */
+    #workflow { background: var(--white); }
+
+    .workflow-track {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .workflow-track::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .wf-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .wf-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--blue-mid);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 6px 6px 0px rgba(0,0,0,0.8);
+    }
+
+    .wf-num-teal   { background: var(--teal); }
+    .wf-num-green  { background: var(--green); }
+    .wf-num-orange { background: var(--orange); }
+    .wf-num-purple { background: var(--purple); }
+    .wf-num-red    { background: var(--red); }
+
+    .wf-content {
+      background: var(--bg);
+      border: 2px solid #000000;
+      border-radius: 12px;
+      padding: 20px 22px;
+      flex: 1;
+      margin-top: 6px;
+    }
+
+    .wf-content h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .wf-content p  { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+    .wf-tag {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--blue-mid);
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: linear-gradient(135deg, #1a365d, #2b6cb0);
+      text-align: center;
+      padding: 90px 40px;
+    }
+
+    #cta h2 {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    #cta p { font-size: 17px; color: #bee3f8; margin-bottom: 40px; }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .cta-demo-grid {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .demo-chip {
+      background: rgba(255,255,255,0.12);
+      border: 2px solid #000000;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .demo-chip:hover { background: rgba(255,255,255,0.22); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1a2e;
+      color: #a0aec0;
+      padding: 32px 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    footer strong { color: #90cdf4; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .objective-layout { grid-template-columns: 1fr; }
+      .roles-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 60px 20px; }
+      nav { padding: 0 20px; }
+      .hero { padding: 70px 20px 60px; }
+      .stats-strip { gap: 30px; padding: 24px 20px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="/">
+      <div class="nav-brand-icon">🚚</div>
+      LastMile Tracker
+    </a>
+    <div class="nav-links">
+      <a href="#problem">Problem</a>
+      <a href="#objective">Objective</a>
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#impact">Impact</a>
+      <a href="/login" class="nav-cta">Login / Register →</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🏆 Unthinkable Solutions — Assignment Project</div>
+    <h1>Last-Mile Delivery,<br><span>Tracked End to End</span></h1>
+    <p class="hero-sub">A unified logistics platform for customers, delivery agents, and operations admins — with smart pricing, intelligent agent assignment, and real-time order tracking.</p>
+    <div class="hero-actions">
+      <a href="/login" class="btn-hero-primary">Open the Platform →</a>
+      <a href="#problem" class="btn-hero-outline">See the Problem We Solve</a>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="strip-stat">
+      <span class="strip-stat-value">3</span>
+      <div class="strip-stat-label">User Roles</div>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-stat-value">15+</span>
+      <div class="strip-stat-label">REST API Endpoints</div>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-stat-value">6</span>
+      <div class="strip-stat-label">Order Status Stages</div>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-stat-value">100%</span>
+      <div class="strip-stat-label">Config-Driven Pricing</div>
+    </div>
+    <div class="strip-stat">
+      <span class="strip-stat-value">0</span>
+      <div class="strip-stat-label">Hardcoded Rates</div>
+    </div>
+  </div>
+
+  <!-- PROBLEM STATEMENT -->
+  <section id="problem">
+    <div class="section-inner">
+      <div class="section-tag">Problem Statement</div>
+      <h2 class="section-title">What's broken in last-mile logistics today?</h2>
+      <p class="section-lead">Last-mile delivery is the most expensive, complex, and failure-prone leg of the supply chain. For small and mid-size logistics operations, these pain points compound daily.</p>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="problem-icon">💸</span>
+          <h3>Opaque, Inconsistent Pricing</h3>
+          <p>Charges are calculated manually or differ between staff — customers don't see the breakdown before they commit, leading to disputes and distrust.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">📍</span>
+          <h3>Manual Agent Assignment</h3>
+          <p>Dispatchers spend hours matching orders to agents based on gut feel. Nearest available agents are often missed, increasing delivery times and fuel costs.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">🔇</span>
+          <h3>Zero Customer Visibility</h3>
+          <p>Customers have no way to track their parcel in real time. They call support repeatedly, overwhelming staff and creating poor experiences.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">🗂️</span>
+          <h3>No Delivery History or Audit Trail</h3>
+          <p>When a delivery fails or is disputed, there is no timestamped record of who did what and when — making accountability impossible.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">🔄</span>
+          <h3>Failed Delivery Dead Ends</h3>
+          <p>When an attempt fails, there's no structured flow to notify the customer, capture a new date, and reassign the order — it simply gets lost or re-entered manually.</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-icon">⚙️</span>
+          <h3>Hardcoded Rate Cards</h3>
+          <p>Pricing rules are embedded in code or spreadsheets. Any change to rates, zones, or surcharges requires a developer and a redeployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIVE -->
+  <section id="objective">
+    <div class="section-inner">
+      <div class="section-tag">Objective</div>
+      <h2 class="section-title">What this platform is built to do</h2>
+      <p class="section-lead">The goal is to replace manual, error-prone logistics workflows with a fully automated, role-aware platform that handles pricing, assignment, tracking, and communication — all in one place.</p>
+      <div class="objective-layout">
+        <div class="objective-visual">
+          <div class="obj-visual-title">Order Lifecycle at a Glance</div>
+          <div class="obj-step">
+            <div class="obj-step-num">1</div>
+            <div class="obj-step-text">
+              <strong>Customer places order</strong>
+              <span>Pickup + drop area, dimensions, weight, order type</span>
+            </div>
+          </div>
+          <div class="obj-step">
+            <div class="obj-step-num">2</div>
+            <div class="obj-step-text">
+              <strong>System auto-calculates charge</strong>
+              <span>Volumetric weight · Zone type · B2B/B2C rate card · COD surcharge</span>
+            </div>
+          </div>
+          <div class="obj-step">
+            <div class="obj-step-num">3</div>
+            <div class="obj-step-text">
+              <strong>Admin assigns agent</strong>
+              <span>Manual pick or auto-assign to nearest available agent via GPS</span>
+            </div>
+          </div>
+          <div class="obj-step">
+            <div class="obj-step-num">4</div>
+            <div class="obj-step-text">
+              <strong>Agent updates status en route</strong>
+              <span>Picked Up → In Transit → Out for Delivery → Delivered / Failed</span>
+            </div>
+          </div>
+          <div class="obj-step">
+            <div class="obj-step-num">5</div>
+            <div class="obj-step-text">
+              <strong>Customer tracks live & gets notified</strong>
+              <span>Email + SMS on every status change · Full timeline · Map view</span>
+            </div>
+          </div>
+          <div class="obj-step">
+            <div class="obj-step-num">6</div>
+            <div class="obj-step-text">
+              <strong>Failed? Customer reschedules</strong>
+              <span>New date captured · Agent reassigned automatically</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <ul class="objective-points">
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Eliminate pricing disputes</strong>
+                  <span>Show itemized cost breakdown before the customer confirms — base rate, weight surcharge, and COD fee all visible upfront.</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Cut dispatcher workload with auto-assignment</strong>
+                  <span>Haversine-formula GPS distance engine finds the nearest available agent in under a second.</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Give customers real-time visibility</strong>
+                  <span>Live map with agent pin, route line, and a full immutable status timeline — no support calls needed.</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Build an unbreakable audit trail</strong>
+                  <span>Every status change is logged with actor, timestamp, and remarks — nothing can be silently altered.</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Make pricing 100% admin-configurable</strong>
+                  <span>Zone definitions, area pins, B2B/B2C rates, intra/inter multipliers, and COD surcharge — all editable from the admin UI, no code changes.</span>
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="obj-check">✓</div>
+              <div>
+                <p><strong>Handle failures gracefully</strong>
+                  <span>Structured failed-delivery flow: agent freed, customer notified, reschedule date captured, order reassigned.</span>
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-inner">
+      <div class="section-tag">How It Works</div>
+      <h2 class="section-title">Three roles. One seamless system.</h2>
+      <p class="section-lead">Each role gets a dedicated dashboard built around their specific responsibilities. Here's what each person does on the platform.</p>
+      <div class="roles-grid">
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-icon role-icon-admin">🔑</div>
+            <div>
+              <h3>Admin</h3>
+              <p>Operations Manager · Full control</p>
+            </div>
+          </div>
+          <div class="role-card-body">
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Manage zones & areas</strong> — Create delivery zones, pin area coordinates on map</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Configure rate cards</strong> — Set B2B/B2C intra/inter zone rates and COD surcharge, no code needed</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Create orders on behalf of customers</strong> — Full order form with live price preview</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Assign agents</strong> — Manual selection or one-click auto-assign to nearest GPS agent</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Filter & override</strong> — Filter all orders by status/zone/agent, force-override any status</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot"></div>
+              <p><strong>Live agent map</strong> — See all field agents color-coded by availability in real time</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-icon role-icon-customer">👤</div>
+            <div>
+              <h3>Customer</h3>
+              <p>End user · Places & tracks orders</p>
+            </div>
+          </div>
+          <div class="role-card-body">
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>Register & log in</strong> — Self-serve account creation, JWT-authenticated sessions</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>Place orders</strong> — Interactive map picker, auto-snaps to nearest delivery area</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>See cost before confirming</strong> — Live price estimate shows every charge line item</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>Track orders live</strong> — Map with agent pin and route line, full status timeline</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>Get email + SMS notifications</strong> — Automatic alerts on every status change</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-green"></div>
+              <p><strong>Reschedule failed deliveries</strong> — Pick a new date directly from the order card</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-card-header">
+            <div class="role-icon role-icon-agent">🚴</div>
+            <div>
+              <h3>Delivery Agent</h3>
+              <p>Field operator · Executes deliveries</p>
+            </div>
+          </div>
+          <div class="role-card-body">
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-orange"></div>
+              <p><strong>Toggle availability</strong> — Go online/offline, system only assigns to available agents</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-orange"></div>
+              <p><strong>Update location</strong> — Select current area to keep GPS position accurate for auto-assignment</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-orange"></div>
+              <p><strong>View assigned orders</strong> — Full order details with customer address and COD amount</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-orange"></div>
+              <p><strong>Progress status step by step</strong> — Picked Up → In Transit → Out for Delivery → Delivered</p>
+            </div>
+            <div class="role-step">
+              <div class="role-step-dot role-step-dot-orange"></div>
+              <p><strong>Report failed delivery</strong> — Select structured reason, agent is freed for reassignment</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="section-inner">
+      <div class="section-tag">Key Features</div>
+      <h2 class="section-title">Everything built into the platform</h2>
+      <p class="section-lead">From the pricing engine to the notification system, every feature was designed to remove a specific operational pain point.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-blue">📐</div>
+          <h3>Volumetric Weight Engine</h3>
+          <p>Calculates L×B×H ÷ 5000, compares with actual weight, and bills on the higher of the two — the industry-standard dimensional weight formula.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-teal">🗺️</div>
+          <h3>Zone-Based Rate Cards</h3>
+          <p>Separate B2B and B2C rate cards, each with independent intra-zone (local) and inter-zone (outstation) rates, base weight, and per-kg add-on charges.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-orange">📡</div>
+          <h3>GPS Auto-Assignment</h3>
+          <p>Uses the Haversine formula to calculate great-circle distance between the pickup area and every available agent's last known GPS coordinates — assigns the nearest one instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-green">📬</div>
+          <h3>Email + SMS Notifications</h3>
+          <p>Every status change triggers an HTML email via Nodemailer (Ethereal SMTP for testing) and a simulated SMS — both logged in the Notification Simulator panel.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-purple">📜</div>
+          <h3>Immutable Tracking Timeline</h3>
+          <p>Each status transition is permanently logged with the actor's name, role, timestamp, and remarks. The history can never be edited or deleted.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-red">🔄</div>
+          <h3>Failed Delivery + Reschedule Flow</h3>
+          <p>Agent selects a structured failure reason, the system frees the agent, notifies the customer, and lets them pick a new delivery date — then the order re-enters the assignment queue.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-blue">🔐</div>
+          <h3>Role-Based Auth (JWT)</h3>
+          <p>Every API endpoint is guarded by JWT authentication and role-based authorization — customers can't access admin routes, agents can't see other agents' orders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-teal">🖥️</div>
+          <h3>Admin Rate Card UI</h3>
+          <p>Admins update zone rates, COD surcharges, and base weights from the dashboard without touching a single line of code. Changes apply to all future orders immediately.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap fi-orange">🗾</div>
+          <h3>Interactive Map Picker</h3>
+          <p>Customer clicks on the map to set pickup and drop locations — the system snaps the pin to the nearest area, draws a route line, and auto-fills the area selector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REAL-WORLD IMPACT -->
+  <section id="impact">
+    <div class="section-inner">
+      <div class="section-tag">Real-World Value</div>
+      <h2 class="section-title">How this solves real logistics problems</h2>
+      <p class="section-lead">Every feature maps to a concrete operational problem that logistics businesses face every day.</p>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <span class="impact-card-icon">🏭</span>
+          <h3>For Small Logistics Businesses</h3>
+          <p>Replaces spreadsheets, WhatsApp groups, and phone calls with a structured platform. One admin can manage agents, zones, and orders from a single screen.</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-card-icon">🛒</span>
+          <h3>For E-Commerce Sellers</h3>
+          <p>B2C and B2B rate cards mean the same platform serves both individual shoppers and bulk business shippers — with correct pricing applied automatically.</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-card-icon">🚴</span>
+          <h3>For Delivery Agents</h3>
+          <p>Clear step-by-step status workflow means agents always know their next action. No ambiguity, no miscommunication with the dispatcher.</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-card-icon">📦</span>
+          <h3>For End Customers</h3>
+          <p>Transparent pricing before purchase, live map tracking, and email alerts on every update eliminate the "where is my order?" anxiety completely.</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-card-icon">📊</span>
+          <h3>For Operations Managers</h3>
+          <p>Dashboard stats, filterable order ledger, force-override capability, and agent tracking map give complete operational control from one view.</p>
+        </div>
+        <div class="impact-card">
+          <span class="impact-card-icon">⚖️</span>
+          <h3>For Dispute Resolution</h3>
+          <p>The immutable tracking timeline with actor, timestamp, and remarks makes every delivery step provable — protecting both the business and the customer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="tech">
+    <div class="section-inner">
+      <div class="section-tag">Technical Stack</div>
+      <h2 class="section-title">Built with simple, effective technology</h2>
+      <p class="section-lead">No frameworks, no build steps — pure Node.js on the backend and HTML/CSS/JS on the frontend, exactly as specified.</p>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <span class="tech-card-icon">🟢</span>
+          <h4>Node.js + Express</h4>
+          <p>REST API backend with JWT auth, role guards, and full business logic</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-card-icon">📄</span>
+          <h4>JSON File Database</h4>
+          <p>Flat-file persistence with async write queue — no external DB dependency</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-card-icon">🔑</span>
+          <h4>JWT Authentication</h4>
+          <p>Token-based auth with 24h expiry and server-side role enforcement</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-card-icon">🗺️</span>
+          <h4>Leaflet.js Maps</h4>
+          <p>Interactive maps for area picking, order tracking, and agent visibility</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-card-icon">📧</span>
+          <h4>Nodemailer / Ethereal</h4>
+          <p>HTML email notifications via Ethereal SMTP test accounts</p>
+        </div>
+        <div class="tech-card">
+          <span class="tech-card-icon">🌐</span>
+          <h4>Vanilla HTML/CSS/JS</h4>
+          <p>Zero dependencies on the frontend — no React, no build tooling</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER WORKFLOW TIMELINE -->
+  <section id="workflow">
+    <div class="section-inner">
+      <div class="section-tag">Order Journey</div>
+      <h2 class="section-title">Full lifecycle of a delivery order</h2>
+      <p class="section-lead">From placement to doorstep — every step is tracked, notified, and logged.</p>
+      <div class="workflow-track">
+        <div class="wf-step">
+          <div class="wf-num">1</div>
+          <div class="wf-content">
+            <div class="wf-tag">Customer / Admin</div>
+            <h3>Order Placed</h3>
+            <p>Customer enters pickup & drop addresses, selects areas on map, fills package dimensions and weight. System calculates volumetric weight, looks up the correct rate card (B2B or B2C), applies zone multiplier, adds COD surcharge if applicable, and shows the total before confirmation.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num wf-num-teal">2</div>
+          <div class="wf-content">
+            <div class="wf-tag">Admin</div>
+            <h3>Agent Assigned</h3>
+            <p>Admin either selects an agent manually from a dropdown or clicks "Auto" to trigger GPS-based auto-assignment. The Haversine engine calculates distance from the pickup area to every available agent and assigns the closest one. Agent status flips to "busy".</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num wf-num-orange">3</div>
+          <div class="wf-content">
+            <div class="wf-tag">Delivery Agent</div>
+            <h3>Picked Up → In Transit → Out for Delivery</h3>
+            <p>Agent steps through the status sequence from their dashboard. Each transition is logged with timestamp and actor name. Customer receives an email and SMS notification at every step.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num wf-num-green">4A</div>
+          <div class="wf-content">
+            <div class="wf-tag">Successful Path</div>
+            <h3>Delivered ✓</h3>
+            <p>Agent marks the order as Delivered. The tracking timeline is sealed. Customer receives final delivery confirmation email. Agent status returns to "available" for new assignments.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num wf-num-red">4B</div>
+          <div class="wf-content">
+            <div class="wf-tag">Failure Path</div>
+            <h3>Failed → Rescheduled</h3>
+            <p>Agent selects a failure reason (refused, wrong address, not home, cash not ready, damaged package). Agent is freed immediately. Customer receives a failure notification and sees a reschedule form. Customer picks a new date — order resets to "Placed" unassigned and re-enters the queue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <h2>Ready to explore the platform?</h2>
+    <p>Use the demo accounts below for instant access — no sign-up needed.</p>
+    <div class="cta-buttons">
+      <a href="/login" class="btn-hero-primary">Open Login Page →</a>
+    </div>
+    <div class="cta-demo-grid">
+      <a class="demo-chip" href="/login">🔑 Admin — admin@logistic.com / admin123</a>
+      <a class="demo-chip" href="/login">👤 Customer — customer@logistic.com / customer123</a>
+      <a class="demo-chip" href="/login">🚴 Reena — reena@logistic.com / reena123</a>
+      <a class="demo-chip" href="/login">🚴 Sameer — sameer@logistic.com / sameer123</a>
+      <a class="demo-chip" href="/login">🚴 Nikhil — nikhil@logistic.com / nikhil123</a>
+      <a class="demo-chip" href="/login">🚴 Siya — siya@logistic.com / siya123</a>
+      <a class="demo-chip" href="/login">🚴 Manish — manish@logistic.com / manish123</a>
+      <a class="demo-chip" href="/login">🚴 Vineet — vineet@logistic.com / vineet123</a>
+      <a class="demo-chip" href="/login">🚴 Sai — sai@logistic.com / sai123</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>LastMile Delivery Tracker</strong> &nbsp;·&nbsp; Built for Unthinkable Solutions Assignment &nbsp;·&nbsp; Node.js · Express · Vanilla JS · Leaflet · Nodemailer</p>
+    <p style="margin-top:8px; font-size:12px;">All data is stored locally in db.json · No external database required · Runs on localhost:3000</p>
+  </footer>
+
+</body>
+</html>

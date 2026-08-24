@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Last-Mile Logistics</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- Leaflet Map CSS/JS CDNs -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">Logistics Admin</div>
+      <ul class="sidebar-menu">
+        <li id="menu-overview" class="active"><a href="#" onclick="switchTab('overview')">System Overview</a></li>
+        <li id="menu-zones"><a href="#" onclick="switchTab('zones')">Zones & Areas</a></li>
+        <li id="menu-rates"><a href="#" onclick="switchTab('rates')">Rate Cards</a></li>
+        <li id="menu-orders"><a href="#" onclick="switchTab('orders')">Manage Orders</a></li>
+        <li id="menu-agents-map"><a href="#" onclick="switchTab('agents-map')">Track Agents</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div id="username-display" class="user-name">Loading...</div>
+        <div class="user-role">Administrator</div>
+        <button class="logout-btn" onclick="logout()">Logout Account</button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <div class="header-actions">
+        <h1 id="page-title">Admin Console</h1>
+        <button class="btn btn-primary" onclick="openCreateOrderModal()">Create Order (On Behalf)</button>
+      </div>
+
+      <!-- OVERVIEW PANEL -->
+      <div id="tab-content-overview" class="tab-panel">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="label">Total Orders</span>
+            <span class="value" id="stat-total-orders">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Placed / Pending</span>
+            <span class="value" id="stat-placed-orders" style="color: var(--info-color);">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Active Deliveries</span>
+            <span class="value" id="stat-active-orders" style="color: var(--warning-color);">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Delivered</span>
+            <span class="value" id="stat-delivered-orders" style="color: var(--success-color);">0</span>
+          </div>
+          <div class="stat-card">
+            <span class="label">Failed</span>
+            <span class="value" id="stat-failed-orders" style="color: var(--danger-color);">0</span>
+          </div>
+        </div>
+
+        <div class="rate-card-grid">
+          <!-- Recent Orders summary -->
+          <div class="panel">
+            <div class="panel-header">Recent Orders</div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table" style="font-size: 13px;">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer</th>
+                      <th>Route</th>
+                      <th>Type</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-orders-body">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active agents overview -->
+          <div class="panel">
+            <div class="panel-header">Agent Status Overview</div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table" style="font-size: 13px;">
+                  <thead>
+                    <tr>
+                      <th>Agent</th>
+                      <th>Vehicle</th>
+                      <th>Status</th>
+                      <th>Area</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overview-agents-body">
+                    <!-- Loaded dynamically -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ZONES & AREAS PANEL -->
+      <div id="tab-content-zones" class="tab-panel" style="display: none;">
+        <div class="rate-card-grid">
+          <!-- Zone creation & listing -->
+          <div>
+            <div class="panel">
+              <div class="panel-header">Create Zone</div>
+              <div class="panel-body">
+                <form id="create-zone-form">
+                  <div class="form-group">
+                    <label for="zone-name">Zone Name</label>
+                    <input type="text" id="zone-name" class="form-control" placeholder="e.g. North Zone" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="zone-desc">Description</label>
+                    <input type="text" id="zone-desc" class="form-control" placeholder="e.g. Industrial and highway border areas">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Add Zone</button>
+                </form>
+              </div>
+            </div>
+            
+            <div class="panel">
+              <div class="panel-header">Zones Directory</div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Zone ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-zones-body">
+                      <!-- Loaded dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Area creation & listing -->
+          <div>
+            <div class="panel">
+              <div class="panel-header">Add Area to Zone</div>
+              <div class="panel-body">
+                <form id="create-area-form">
+                  <div class="form-group">
+                    <label for="area-name">Area Name</label>
+                    <input type="text" id="area-name" class="form-control" placeholder="e.g. New Town Block C" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="area-zone-id">Assign to Zone</label>
+                    <select id="area-zone-id" class="form-control" required>
+                      <option value="">-- Choose Zone --</option>
+                    </select>
+                  </div>
+                  <div class="rate-card-grid" style="gap: 10px;">
+                    <div class="form-group">
+                      <label for="area-lat">Latitude</label>
+                      <input type="number" id="area-lat" class="form-control" step="0.0001" placeholder="28.6139" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="area-lng">Longitude</label>
+                      <input type="number" id="area-lng" class="form-control" step="0.0001" placeholder="77.2090" required>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Add Area Pin</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">System Area Pins</div>
+              <div class="panel-body">
+                <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Area Name</th>
+                        <th>Zone</th>
+                        <th>Coords</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-areas-body">
+                      <!-- Loaded dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RATE CARDS PANEL -->
+      <div id="tab-content-rates" class="tab-panel" style="display: none;">
+        <div class="rate-card-grid">
+          <!-- B2C Rates -->
+          <div class="panel">
+            <div class="panel-header" style="background: rgba(74, 85, 104, 0.05);">Configure B2C Rate Card</div>
+            <div class="panel-body">
+              <form id="rate-b2c-form">
+                <h4 style="margin-bottom: 12px; color: var(--primary-color);">Intra-Zone (Local)</h4>
+                <div class="rate-card-grid" style="gap: 10px;">
+                  <div class="form-group">
+                    <label>Base Rate (₹)</label>
+                    <input type="number" id="b2c-intra-base-rate" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Base Wt (kg)</label>
+                    <input type="number" id="b2c-intra-base-wt" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Add'l Rate/kg (₹)</label>
+                    <input type="number" id="b2c-intra-add-rate" class="form-control" required>
+                  </div>
+                </div>
+
+                <h4 style="margin-top: 15px; margin-bottom: 12px; color: var(--primary-color);">Inter-Zone (Outstation)</h4>
+                <div class="rate-card-grid" style="gap: 10px;">
+                  <div class="form-group">
+                    <label>Base Rate (₹)</label>
+                    <input type="number" id="b2c-inter-base-rate" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Base Wt (kg)</label>
+                    <input type="number" id="b2c-inter-base-wt" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Add'l Rate/kg (₹)</label>
+                    <input type="number" id="b2c-inter-add-rate" class="form-control" required>
+                  </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                <div class="form-group">
+                  <label for="b2c-cod-surcharge">COD Surcharge Amount (₹)</label>
+                  <input type="number" id="b2c-cod-surcharge" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block mt-3">Save B2C Configuration</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- B2B Rates -->
+          <div class="panel">
+            <div class="panel-header" style="background: rgba(74, 85, 104, 0.05);">Configure B2B Rate Card</div>
+            <div class="panel-body">
+              <form id="rate-b2b-form">
+                <h4 style="margin-bottom: 12px; color: var(--primary-color);">Intra-Zone (Local)</h4>
+                <div class="rate-card-grid" style="gap: 10px;">
+                  <div class="form-group">
+                    <label>Base Rate (₹)</label>
+                    <input type="number" id="b2b-intra-base-rate" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Base Wt (kg)</label>
+                    <input type="number" id="b2b-intra-base-wt" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Add'l Rate/kg (₹)</label>
+                    <input type="number" id="b2b-intra-add-rate" class="form-control" required>
+                  </div>
+                </div>
+
+                <h4 style="margin-top: 15px; margin-bottom: 12px; color: var(--primary-color);">Inter-Zone (Outstation)</h4>
+                <div class="rate-card-grid" style="gap: 10px;">
+                  <div class="form-group">
+                    <label>Base Rate (₹)</label>
+                    <input type="number" id="b2b-inter-base-rate" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Base Wt (kg)</label>
+                    <input type="number" id="b2b-inter-base-wt" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Add'l Rate/kg (₹)</label>
+                    <input type="number" id="b2b-inter-add-rate" class="form-control" required>
+                  </div>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                <div class="form-group">
+                  <label for="b2b-cod-surcharge">COD Surcharge Amount (₹)</label>
+                  <input type="number" id="b2b-cod-surcharge" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-block mt-3">Save B2B Configuration</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MANAGE ORDERS PANEL -->
+      <div id="tab-content-orders" class="tab-panel" style="display: none;">
+        <div class="panel">
+          <div class="panel-header">Filters & Controls</div>
+          <div class="panel-body" style="padding: 15px 20px;">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+              <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 150px;">
+                <label>Filter Status</label>
+                <select id="filter-status" class="form-control" onchange="loadOrders()">
+                  <option value="">-- All Statuses --</option>
+                  <option value="Placed">Placed</option>
+                  <option value="Assigned">Assigned</option>
+                  <option value="Picked Up">Picked Up</option>
+                  <option value="In Transit">In Transit</option>
+                  <option value="Out for Delivery">Out for Delivery</option>
+                  <option value="Delivered">Delivered</option>
+                  <option value="Failed">Failed</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 150px;">
+                <label>Filter Zone</label>
+                <select id="filter-zone" class="form-control" onchange="loadOrders()">
+                  <option value="">-- All Zones --</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 150px;">
+                <label>Filter Agent</label>
+                <select id="filter-agent" class="form-control" onchange="loadOrders()">
+                  <option value="">-- All Agents --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">Complete Delivery Manifest</div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table" style="font-size: 13px;">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Pickup Area</th>
+                    <th>Drop Area</th>
+                    <th>Charge</th>
+                    <th>Status</th>
+                    <th>Agent</th>
+                    <th style="min-width: 250px;">Assign / Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-body">
+                  <tr>
+                    <td colspan="9" style="text-align: center;">No orders match criteria.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AGENTS TRACKING MAP PANEL -->
+      <div id="tab-content-agents-map" class="tab-panel" style="display: none;">
+        <div class="panel">
+          <div class="panel-header">Live Field Agent Positions</div>
+          <div class="panel-body">
+            <div id="admin-agent-tracking-map" class="map-container" style="height: 480px;"></div>
+            <div style="font-size: 12px; color: var(--text-muted);">
+              💡 Markers display: <strong style="color: #48bb78;">Green</strong> = Online Available, <strong style="color: #ecc94b;">Orange</strong> = Busy, <strong style="color: #f56565;">Red</strong> = Offline.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ADMIN CREATE ORDER MODAL -->
+  <div id="admin-order-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span>Create Delivery Order (On Behalf)</span>
+        <button class="modal-close" onclick="closeCreateOrderModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="admin-order-form">
+          <div class="form-group">
+            <label for="admin-cust-select">Select Customer Account</label>
+            <select id="admin-cust-select" class="form-control" required>
+              <option value="">-- Choose Customer --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="admin-pickup-addr">Pickup Address</label>
+            <input type="text" id="admin-pickup-addr" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-pickup-area">Pickup Area</label>
+            <select id="admin-pickup-area" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="admin-drop-addr">Drop Address</label>
+            <input type="text" id="admin-drop-addr" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="admin-drop-area">Drop Area</label>
+            <select id="admin-drop-area" class="form-control" required></select>
+          </div>
+
+          <div class="rate-card-grid" style="gap: 10px;">
+            <div class="form-group">
+              <label>L (cm)</label>
+              <input type="number" id="admin-pkg-len" class="form-control" min="1" value="10" required>
+            </div>
+            <div class="form-group">
+              <label>W (cm)</label>
+              <input type="number" id="admin-pkg-wid" class="form-control" min="1" value="10" required>
+            </div>
+            <div class="form-group">
+              <label>H (cm)</label>
+              <input type="number" id="admin-pkg-hei" class="form-control" min="1" value="10" required>
+            </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="admin-pkg-wt" class="form-control" min="0.1" step="0.1" value="1.0" required>
+            </div>
+          </div>
+
+          <div class="rate-card-grid">
+            <div class="form-group">
+              <label>Order Type</label>
+              <select id="admin-order-type" class="form-control">
+                <option value="B2C">B2C</option>
+                <option value="B2B">B2B</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Payment</label>
+              <select id="admin-pay-type" class="form-control">
+                <option value="Prepaid">Prepaid</option>
+                <option value="COD">COD</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Scheduled Date</label>
+            <input type="date" id="admin-schedule-date" class="form-control" required>
+          </div>
+
+          <div style="background: #ebf8ff; border: 2px solid #000000; padding: 12px; border-radius: 12px; margin: 15px 0; font-size: 13px;" id="admin-estimate-preview">
+            Cost estimation shows here before confirmation.
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Confirm Order Submission</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERRIDE STATUS MODAL -->
+  <div id="admin-override-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span>Force State Override / Edit Agent</span>
+        <button class="modal-close" onclick="closeOverrideModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="admin-override-form">
+          <div class="form-group">
+            <label for="override-status-select">Select New Order Status</label>
+            <select id="override-status-select" class="form-control" required>
+              <option value="Placed">Placed</option>
+              <option value="Assigned">Assigned</option>
+              <option value="Picked Up">Picked Up</option>
+              <option value="In Transit">In Transit</option>
+              <option value="Out for Delivery">Out for Delivery</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Failed">Failed</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="override-agent-select">Update Assigned Delivery Agent</label>
+            <select id="override-agent-select" class="form-control">
+              <option value="">-- Unassigned (Clear Agent) --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="override-remarks">Override Explanation (For timeline ledger)</label>
+            <input type="text" id="override-remarks" class="form-control" placeholder="e.g. Manual status update on behalf of agent" required>
+          </div>
+
+          <button type="submit" class="btn btn-danger btn-block">Execute Force Override</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

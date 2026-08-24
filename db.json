@@ -1,0 +1,1035 @@
+{
+  "users": [
+    {
+      "id": "usr_admin",
+      "name": "System Admin",
+      "email": "admin@logistic.com",
+      "passwordHash": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "role": "admin",
+      "phone": "+15550100"
+    },
+    {
+      "id": "usr_customer",
+      "name": "Simran Customer",
+      "email": "customer@logistic.com",
+      "passwordHash": "b041c0aeb35bb0fa4aa668ca5a920b590196fdaf9a00eb852c9b7f4d123cc6d6",
+      "role": "customer",
+      "phone": "+15550200"
+    },
+    {
+      "id": "usr_agent1",
+      "name": "Reena",
+      "email": "reena@logistic.com",
+      "passwordHash": "127f5d8cff7378b8790e586a2ea79223acbbea198f373a33e3e759440b905f59",
+      "role": "agent",
+      "phone": "+91901100001",
+      "vehicle": "scooty",
+      "agentStatus": "busy",
+      "agentLocation": {
+        "lat": 28.6139,
+        "lng": 77.209,
+        "areaId": "area_1",
+        "areaName": "Downtown Core"
+      }
+    },
+    {
+      "id": "usr_agent2",
+      "name": "Sameer",
+      "email": "sameer@logistic.com",
+      "passwordHash": "13e7b735c6f9e4c224e67a83b9a18817cc2a097dad25a055c4a292773fd95c8d",
+      "role": "agent",
+      "phone": "+91901100002",
+      "vehicle": "bike",
+      "agentStatus": "busy",
+      "agentLocation": {
+        "lat": 28.58,
+        "lng": 77.3,
+        "areaId": "area_3",
+        "areaName": "Greenwood"
+      }
+    },
+    {
+      "id": "usr_agent3",
+      "name": "Nikhil",
+      "email": "nikhil@logistic.com",
+      "passwordHash": "e0d67bf123f53ede0d6048b29e85830f8543e7b0e7baf66e5be4431e5ee1ba9f",
+      "role": "agent",
+      "phone": "+91901100003",
+      "vehicle": "cycle",
+      "agentStatus": "busy",
+      "agentLocation": {
+        "lat": 28.67,
+        "lng": 77.12,
+        "areaId": "area_5",
+        "areaName": "Industrial Hub"
+      }
+    },
+    {
+      "id": "usr_agent4",
+      "name": "Siya",
+      "email": "siya@logistic.com",
+      "passwordHash": "cb55b791b5e0918ad32f6438bc8bdf983bcf03f5cb316adeaf2090daee4b2459",
+      "role": "agent",
+      "phone": "+91901100004",
+      "vehicle": "scooty",
+      "agentStatus": "available",
+      "agentLocation": {
+        "lat": 28.625,
+        "lng": 77.22,
+        "areaId": "area_2",
+        "areaName": "Business Park"
+      }
+    },
+    {
+      "id": "usr_agent5",
+      "name": "Manish",
+      "email": "manish@logistic.com",
+      "passwordHash": "a7c7f9a898df3aa6eb0660a652c4e7088a0985d4cb5c099268ae38254d37a005",
+      "role": "agent",
+      "phone": "+91901100005",
+      "vehicle": "bike",
+      "agentStatus": "offline",
+      "agentLocation": {
+        "lat": 28.59,
+        "lng": 77.31,
+        "areaId": "area_4",
+        "areaName": "East Heights"
+      }
+    },
+    {
+      "id": "usr_agent6",
+      "name": "Vineet",
+      "email": "vineet@logistic.com",
+      "passwordHash": "eb1c91dfc314a32d2eb897d3e62f4a9893441061cc0c5a9df66b8dcb77517d25",
+      "role": "agent",
+      "phone": "+91901100006",
+      "vehicle": "scooty",
+      "agentStatus": "available",
+      "agentLocation": {
+        "lat": 28.66,
+        "lng": 77.1,
+        "areaId": "area_6",
+        "areaName": "West Gate"
+      }
+    },
+    {
+      "id": "usr_agent7",
+      "name": "Sai",
+      "email": "sai@logistic.com",
+      "passwordHash": "2252ee9088f889869c4dbffe0857f4b51480283a1af5b8cb4147de09fe1e416c",
+      "role": "agent",
+      "phone": "+91901100007",
+      "vehicle": "cycle",
+      "agentStatus": "offline",
+      "agentLocation": {
+        "lat": 28.6139,
+        "lng": 77.209,
+        "areaId": "area_1",
+        "areaName": "Downtown Core"
+      }
+    },
+    {
+      "id": "usr_t2kgnfb0e",
+      "name": "simkim",
+      "email": "simkim@gmail.com",
+      "passwordHash": "8bb0cf6eb9b17d0f7d22b456f121257dc1254e1f01665370476383ea776df414",
+      "role": "customer",
+      "phone": "+912345678901"
+    },
+    {
+      "id": "usr_ff7nm98mc",
+      "name": "rikki",
+      "email": "rikkisingh@gmail.com",
+      "passwordHash": "4e83e8afc031c5d5a58b68747c710cffdbac10357a73f7b7fcd74c494329f651",
+      "role": "customer",
+      "phone": "+91288389992"
+    },
+    {
+      "id": "usr_d3ocpqey3",
+      "name": "jimmy",
+      "email": "jimmi@gmail.com",
+      "passwordHash": "73dcb6d7ce115f32913a3b16e04618778da34ddc7c724cd0621c71a4ef9380c8",
+      "role": "customer",
+      "phone": "+91829891900"
+    }
+  ],
+  "zones": [
+    {
+      "id": "zone_1",
+      "name": "Central Zone",
+      "description": "Business and Downtown Core"
+    },
+    {
+      "id": "zone_2",
+      "name": "East Zone",
+      "description": "Suburbs and Residential Areas"
+    },
+    {
+      "id": "zone_3",
+      "name": "West Zone",
+      "description": "Industrial and Warehousing Areas"
+    }
+  ],
+  "areas": [
+    {
+      "id": "area_1",
+      "name": "Downtown Core",
+      "zoneId": "zone_1",
+      "lat": 28.6139,
+      "lng": 77.209
+    },
+    {
+      "id": "area_2",
+      "name": "Business Park",
+      "zoneId": "zone_1",
+      "lat": 28.625,
+      "lng": 77.22
+    },
+    {
+      "id": "area_3",
+      "name": "Greenwood",
+      "zoneId": "zone_2",
+      "lat": 28.58,
+      "lng": 77.3
+    },
+    {
+      "id": "area_4",
+      "name": "East Heights",
+      "zoneId": "zone_2",
+      "lat": 28.59,
+      "lng": 77.31
+    },
+    {
+      "id": "area_5",
+      "name": "Industrial Hub",
+      "zoneId": "zone_3",
+      "lat": 28.67,
+      "lng": 77.12
+    },
+    {
+      "id": "area_6",
+      "name": "West Gate",
+      "zoneId": "zone_3",
+      "lat": 28.66,
+      "lng": 77.1
+    }
+  ],
+  "rate_cards": [
+    {
+      "id": "rc_b2b",
+      "orderType": "B2B",
+      "intraZoneBaseRate": 100,
+      "intraZoneBaseWeight": 5,
+      "intraZoneAddRate": 10,
+      "interZoneBaseRate": 250,
+      "interZoneBaseWeight": 5,
+      "interZoneAddRate": 20,
+      "codSurcharge": 50
+    },
+    {
+      "id": "rc_b2c",
+      "orderType": "B2C",
+      "intraZoneBaseRate": 60,
+      "intraZoneBaseWeight": 3,
+      "intraZoneAddRate": 8,
+      "interZoneBaseRate": 150,
+      "interZoneBaseWeight": 3,
+      "interZoneAddRate": 15,
+      "codSurcharge": 30
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_qurrxnfrz",
+      "customerId": "usr_t2kgnfb0e",
+      "customerName": "simkim",
+      "pickupAddress": "main gate metro delhi ",
+      "pickupAreaId": "area_2",
+      "pickupZoneId": "zone_1",
+      "dropAddress": "Sangam Vihar A - Block delhi",
+      "dropAreaId": "area_1",
+      "dropZoneId": "zone_1",
+      "length": 12,
+      "width": 10,
+      "height": 10,
+      "actualWeight": 2,
+      "volumetricWeight": 0.24,
+      "billableWeight": 2,
+      "orderType": "B2C",
+      "paymentType": "COD",
+      "baseCharge": 60,
+      "weightCharge": 0,
+      "codSurcharge": 25,
+      "totalCharge": 85,
+      "status": "Assigned",
+      "agentId": "usr_agent3",
+      "agentName": "Nikhil",
+      "scheduledDate": "2026-08-23",
+      "createdAt": "2026-08-23T21:58:24.453Z",
+      "updatedAt": "2026-08-23T23:15:54.378Z"
+    },
+    {
+      "id": "ord_yh0841lbv",
+      "customerId": "usr_ff7nm98mc",
+      "customerName": "rikki",
+      "pickupAddress": "main gate metro delhi ",
+      "pickupAreaId": "area_2",
+      "pickupZoneId": "zone_1",
+      "dropAddress": "red fort front side  - Block delhi",
+      "dropAreaId": "area_3",
+      "dropZoneId": "zone_2",
+      "length": 10,
+      "width": 10,
+      "height": 10,
+      "actualWeight": 1,
+      "volumetricWeight": 0.2,
+      "billableWeight": 1,
+      "orderType": "B2C",
+      "paymentType": "COD",
+      "baseCharge": 150,
+      "weightCharge": 0,
+      "codSurcharge": 30,
+      "totalCharge": 180,
+      "status": "Placed",
+      "agentId": null,
+      "agentName": null,
+      "scheduledDate": "2026-08-24",
+      "createdAt": "2026-08-24T00:08:28.063Z",
+      "updatedAt": "2026-08-24T00:08:28.063Z"
+    },
+    {
+      "id": "ord_q232nwtrg",
+      "customerId": "usr_ff7nm98mc",
+      "customerName": "rikki",
+      "pickupAddress": "main gate metro delhi ",
+      "pickupAreaId": "area_2",
+      "pickupZoneId": "zone_1",
+      "dropAddress": "red fort front side  - Block delhi",
+      "dropAreaId": "area_1",
+      "dropZoneId": "zone_1",
+      "length": 10,
+      "width": 10,
+      "height": 10,
+      "actualWeight": 1,
+      "volumetricWeight": 0.2,
+      "billableWeight": 1,
+      "orderType": "B2C",
+      "paymentType": "COD",
+      "baseCharge": 60,
+      "weightCharge": 0,
+      "codSurcharge": 30,
+      "totalCharge": 90,
+      "status": "Placed",
+      "agentId": null,
+      "agentName": null,
+      "scheduledDate": "2026-08-24",
+      "createdAt": "2026-08-24T00:11:23.427Z",
+      "updatedAt": "2026-08-24T00:11:23.427Z"
+    },
+    {
+      "id": "ord_snselkr8c",
+      "customerId": "usr_d3ocpqey3",
+      "customerName": "jimmy",
+      "pickupAddress": "main gate metro delhi ",
+      "pickupAreaId": "area_4",
+      "pickupZoneId": "zone_2",
+      "dropAddress": "red fort fback side  - Block delhi",
+      "dropAreaId": "area_1",
+      "dropZoneId": "zone_1",
+      "length": 10,
+      "width": 10,
+      "height": 10,
+      "actualWeight": 2,
+      "volumetricWeight": 0.2,
+      "billableWeight": 2,
+      "orderType": "B2C",
+      "paymentType": "COD",
+      "baseCharge": 150,
+      "weightCharge": 0,
+      "codSurcharge": 30,
+      "totalCharge": 180,
+      "status": "Placed",
+      "agentId": null,
+      "agentName": null,
+      "scheduledDate": "2026-08-24",
+      "createdAt": "2026-08-24T00:15:04.473Z",
+      "updatedAt": "2026-08-24T00:15:04.474Z"
+    }
+  ],
+  "tracking_history": [
+    {
+      "id": "trk_n4l7z7387",
+      "orderId": "ord_kqlgqj9f1",
+      "status": "Placed",
+      "actor": "CUSTOMER: simkim",
+      "timestamp": "2026-08-23T21:58:22.997Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_a4b70402h",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Placed",
+      "actor": "CUSTOMER: simkim",
+      "timestamp": "2026-08-23T21:58:24.455Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_a5rdplg6q",
+      "orderId": "ord_ayq1jmber",
+      "status": "Placed",
+      "actor": "CUSTOMER: simkim",
+      "timestamp": "2026-08-23T21:58:25.047Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_7jhxj4fbl",
+      "orderId": "ord_6i318gg9p",
+      "status": "Placed",
+      "actor": "CUSTOMER: simkim",
+      "timestamp": "2026-08-23T21:58:25.275Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_l8ixg97jt",
+      "orderId": "ord_bd913c1r5",
+      "status": "Placed",
+      "actor": "CUSTOMER: simkim",
+      "timestamp": "2026-08-23T22:07:02.636Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_fp6jd9ypu",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:02:55.776Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_6ivu8nkwo",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:02:57.747Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_yy9yvtm5k",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:02:58.496Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_b1epc60al",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:02:58.713Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_m3nbzfa7i",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:09:24.159Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_ujd3z1w97",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:09:25.896Z",
+      "remarks": "Manually assigned to agent: Reena"
+    },
+    {
+      "id": "trk_ywyyi6vys",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:13:45.791Z",
+      "remarks": "Manually assigned to agent: Sameer"
+    },
+    {
+      "id": "trk_lqq1srzjm",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:13:46.015Z",
+      "remarks": "Manually assigned to agent: Sameer"
+    },
+    {
+      "id": "trk_apo2rbkfk",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:15:50.975Z",
+      "remarks": "Manually assigned to agent: Sameer"
+    },
+    {
+      "id": "trk_5pdg4nlgt",
+      "orderId": "ord_qurrxnfrz",
+      "status": "Assigned",
+      "actor": "Admin: System Admin",
+      "timestamp": "2026-08-23T23:15:54.382Z",
+      "remarks": "Manually assigned to agent: Nikhil"
+    },
+    {
+      "id": "trk_2q44q5gkb",
+      "orderId": "ord_yh0841lbv",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:28.064Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_2vm2tg5uk",
+      "orderId": "ord_92sofdhlg",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:28.812Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_8ob7fyp9k",
+      "orderId": "ord_q541fc8p4",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:29.040Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_gzabs4ee3",
+      "orderId": "ord_r1qasek1v",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:29.737Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_0d2l88g65",
+      "orderId": "ord_retc41k5w",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:30.507Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_6mww7c9fk",
+      "orderId": "ord_v3synakgh",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:31.281Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_ii1piktwu",
+      "orderId": "ord_6jtysieiu",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:08:31.818Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_klgpprqup",
+      "orderId": "ord_q232nwtrg",
+      "status": "Placed",
+      "actor": "CUSTOMER: rikki",
+      "timestamp": "2026-08-24T00:11:23.428Z",
+      "remarks": "Order successfully created and submitted"
+    },
+    {
+      "id": "trk_moltp78pk",
+      "orderId": "ord_snselkr8c",
+      "status": "Placed",
+      "actor": "CUSTOMER: jimmy",
+      "timestamp": "2026-08-24T00:15:04.475Z",
+      "remarks": "Order successfully created and submitted"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "ntf_r3bjuilyr",
+      "orderId": "ord_kqlgqj9f1",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #GQJ9F1 Update: Placed",
+      "message": "Dear simkim,\n\nYour order #GQJ9F1 status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T21:58:22.998Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_m12afr9o8",
+      "orderId": "ord_kqlgqj9f1",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #GQJ9F1 is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-23T21:58:23.000Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_shdpo2lgd",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Placed",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T21:58:24.456Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_bkh8r4l42",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-23T21:58:24.458Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_8g83c7nnf",
+      "orderId": "ord_ayq1jmber",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #1JMBER Update: Placed",
+      "message": "Dear simkim,\n\nYour order #1JMBER status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T21:58:25.048Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_9li8vho13",
+      "orderId": "ord_ayq1jmber",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #1JMBER is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-23T21:58:25.050Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_h8gt8a66m",
+      "orderId": "ord_6i318gg9p",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #18GG9P Update: Placed",
+      "message": "Dear simkim,\n\nYour order #18GG9P status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T21:58:25.277Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_hivilx84r",
+      "orderId": "ord_6i318gg9p",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #18GG9P is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-23T21:58:25.279Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_j9rcr02tz",
+      "orderId": "ord_bd913c1r5",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #13C1R5 Update: Placed",
+      "message": "Dear simkim,\n\nYour order #13C1R5 status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T22:07:02.637Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_svrs88xrs",
+      "orderId": "ord_bd913c1r5",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #13C1R5 is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-23T22:07:02.639Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_8uhh4wkur",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:02:55.777Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_kvvssxn9o",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:02:55.779Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_vlxc7j98t",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:02:57.748Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_12gtl3cfa",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:02:57.749Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_w3fdqpqqh",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:02:58.497Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_ivjpu22f1",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:02:58.498Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_ai3r6qwx4",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:02:58.714Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_ldpy8tb2o",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:02:58.715Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_n3y1dtr49",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:09:24.161Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_hvmr9qe4t",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:09:24.163Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_wf9fgxmez",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Reena\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:09:25.899Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_uh0i47lrj",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Reena",
+      "sentAt": "2026-08-23T23:09:25.900Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_lx08gjfp1",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Sameer\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:13:45.792Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_ci7jqb16j",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Sameer",
+      "sentAt": "2026-08-23T23:13:45.794Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_rkdp71uqg",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Sameer\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:13:46.016Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_lzyt6xz88",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Sameer",
+      "sentAt": "2026-08-23T23:13:46.017Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_nxhxz07nr",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Sameer\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:15:50.978Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_5kuh4u7pv",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Sameer",
+      "sentAt": "2026-08-23T23:15:50.979Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_obm0u1jh4",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "simkim@gmail.com",
+      "type": "email",
+      "subject": "Order #RXNFRZ Update: Assigned",
+      "message": "Dear simkim,\n\nYour order #RXNFRZ status has been updated to \"Assigned\".\nDetails: Assigned to delivery agent: Nikhil\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-23T23:15:54.383Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_y0z8a05pf",
+      "orderId": "ord_qurrxnfrz",
+      "recipient": "+912345678901",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #RXNFRZ is now: Assigned. Assigned to delivery agent: Nikhil",
+      "sentAt": "2026-08-23T23:15:54.384Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_gqietkqjn",
+      "orderId": "ord_yh0841lbv",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #841LBV Update: Placed",
+      "message": "Dear rikki,\n\nYour order #841LBV status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:28.065Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_isqe6cq6i",
+      "orderId": "ord_yh0841lbv",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #841LBV is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:28.066Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_gw7yotajd",
+      "orderId": "ord_92sofdhlg",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #OFDHLG Update: Placed",
+      "message": "Dear rikki,\n\nYour order #OFDHLG status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:28.812Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_4nk7l873v",
+      "orderId": "ord_92sofdhlg",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #OFDHLG is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:28.813Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_1zslg9s59",
+      "orderId": "ord_q541fc8p4",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #1FC8P4 Update: Placed",
+      "message": "Dear rikki,\n\nYour order #1FC8P4 status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:29.040Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_ichil9w1r",
+      "orderId": "ord_q541fc8p4",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #1FC8P4 is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:29.041Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_tgh4t63nq",
+      "orderId": "ord_r1qasek1v",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #ASEK1V Update: Placed",
+      "message": "Dear rikki,\n\nYour order #ASEK1V status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:29.738Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_cuxagjyjs",
+      "orderId": "ord_r1qasek1v",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #ASEK1V is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:29.739Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_6y26wqo7f",
+      "orderId": "ord_retc41k5w",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #C41K5W Update: Placed",
+      "message": "Dear rikki,\n\nYour order #C41K5W status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:30.507Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_2b8s3vm2e",
+      "orderId": "ord_retc41k5w",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #C41K5W is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:30.508Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_gnwhebhgy",
+      "orderId": "ord_v3synakgh",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #YNAKGH Update: Placed",
+      "message": "Dear rikki,\n\nYour order #YNAKGH status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:31.282Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_02uatnrij",
+      "orderId": "ord_v3synakgh",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #YNAKGH is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:31.282Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_umv96nu7d",
+      "orderId": "ord_6jtysieiu",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #YSIEIU Update: Placed",
+      "message": "Dear rikki,\n\nYour order #YSIEIU status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:08:31.819Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_bajm2dfgt",
+      "orderId": "ord_6jtysieiu",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #YSIEIU is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:08:31.820Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_wtbcbagoa",
+      "orderId": "ord_q232nwtrg",
+      "recipient": "rikkisingh@gmail.com",
+      "type": "email",
+      "subject": "Order #2NWTRG Update: Placed",
+      "message": "Dear rikki,\n\nYour order #2NWTRG status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:11:23.428Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_azehm1xb0",
+      "orderId": "ord_q232nwtrg",
+      "recipient": "+91288389992",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #2NWTRG is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:11:23.429Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_4207ih76e",
+      "orderId": "ord_snselkr8c",
+      "recipient": "jimmi@gmail.com",
+      "type": "email",
+      "subject": "Order #ELKR8C Update: Placed",
+      "message": "Dear jimmy,\n\nYour order #ELKR8C status has been updated to \"Placed\".\nDetails: Delivery order submitted successfully\n\nTrack your package details live on our tracker.\n\nBest regards,\nLast-Mile Logistics Team",
+      "sentAt": "2026-08-24T00:15:04.476Z",
+      "status": "sent"
+    },
+    {
+      "id": "ntf_z243pz89e",
+      "orderId": "ord_snselkr8c",
+      "recipient": "+91829891900",
+      "type": "sms",
+      "subject": "SMS Alert",
+      "message": "Order #ELKR8C is now: Placed. Delivery order submitted successfully",
+      "sentAt": "2026-08-24T00:15:04.477Z",
+      "status": "sent"
+    }
+  ]
+}

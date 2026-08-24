@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Dashboard - Last-Mile Logistics</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">Logistics Agent</div>
+      <div style="padding: 15px 24px; border-bottom: 1px solid #2d3748;">
+        <label style="font-size: 11px; color: #a0aec0; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 5px;">Availability Status</label>
+        <select id="agent-status-toggle" class="form-control" style="background: #2d3748; color: white; border-color: #4a5568;">
+          <option value="available">🟢 Available (Online)</option>
+          <option value="offline">🔴 Offline (Invisible)</option>
+          <option value="busy" disabled>🟡 Busy (On Job)</option>
+        </select>
+      </div>
+      <ul class="sidebar-menu">
+        <li id="menu-deliveries" class="active"><a href="#">My Deliveries</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <div id="username-display" class="user-name">Loading...</div>
+        <div class="user-role">Delivery Agent</div>
+        <button class="logout-btn" onclick="logout()">Logout Account</button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- HEADER -->
+      <div class="header-actions">
+        <h1>Agent Workstation</h1>
+        <div id="agent-location-header" style="font-size: 13px; background: #ebf8ff; color: #2b6cb0; padding: 8px 15px; border-radius: 12px; border: 2px solid #000000;">
+          Current Area: <strong>Loading...</strong>
+        </div>
+      </div>
+
+      <!-- LOCATION UPDATE PANEL -->
+      <div class="panel">
+        <div class="panel-header">Update Current Location</div>
+        <div class="panel-body" style="padding: 15px 20px;">
+          <form id="location-form" style="display: flex; gap: 15px; align-items: flex-end; flex-wrap: wrap;">
+            <div class="form-group" style="margin-bottom: 0; flex-grow: 1; min-width: 250px;">
+              <label for="agent-area-select">Select Your Current Area</label>
+              <select id="agent-area-select" class="form-control" required>
+                <option value="">-- Loading Areas --</option>
+              </select>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-secondary">Update Work Location</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ASSIGNED DELIVERIES PANEL -->
+      <div class="panel">
+        <div class="panel-header">Active Assignments Ledger</div>
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Pickup Street Address</th>
+                  <th>Drop Street Address</th>
+                  <th>Payment Mode</th>
+                  <th>Total Amount</th>
+                  <th>Current Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="agent-orders-body">
+                <tr>
+                  <td colspan="8" style="text-align: center;">No deliveries assigned. Set your status to Available to receive orders.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- DELIVERIES WORKFLOW MODAL -->
+  <div id="agent-action-modal" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span>Delivery Action Workstation</span>
+        <button class="modal-close" onclick="closeAgentModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="agent-modal-body">
+        <!-- Loaded dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAgentModal()">Close Panel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/agent.js"></script>
+</body>
+</html>
